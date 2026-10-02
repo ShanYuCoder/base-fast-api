@@ -1,0 +1,78 @@
+site_name: Fast API Docs
+site_description: Factory AI backend — feature specs, workflow, API codegen
+site_url: https://fast-api-base.local/
+
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+strict: false
+
+# YAML/templates are SSOT inputs — not MkDocs pages
+exclude_docs: |
+  features/yaml/**
+  templates/**
+
+theme:
+  name: material
+  language: vi
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - Features:
+      - Index: common-ui/generated.md
+      - Layout: features/FEATURE-ARTIFACT-LAYOUT.md
+      - Workforce: features/md/factory/workforce/workforce.md
+      - Workforce contract: features/md/factory/workforce/testcases/workforce.md
+      - Knowledge Hub: features/md/factory/knowledge-hub/knowledge-hub.md
+      - Knowledge Hub contract: features/md/factory/knowledge-hub/testcases/knowledge-hub.md
+  - Operational:
+      - Feature flows: operational/FEATURE-ARTIFACT-FLOWS.md
+      - Commands: operational/FAST-ARTIFACT-COMMANDS.md
+      - Codegen: operational/FAST-CODEGEN.md
+      - Backend workflow: operational/TEAM-AI-BACKEND-WORKFLOW.md
+      - Platform mark: operational/PLATFORM-MARK.md
+      - API structure: operational/FAST-API-STRUCTURE.md
+      - Quickstart: operational/FAST-API-QUICKSTART.md
+      - Phase diagram: operational/FAST-BACKEND-PHASE-DIAGRAM.md
+
+extra:
+  generator: false

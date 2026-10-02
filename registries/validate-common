@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+export PYTHONPATH="${ROOT}/registries:${ROOT}/codegen/runners:${ROOT}/tools:${ROOT}/src"
+exec "${ROOT}/.venv/bin/python" -m platform_common.cli "$@"
